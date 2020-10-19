@@ -25,6 +25,7 @@ const generateToken = (user) => {
 }
 
 export default {
+  Query: {},
   Mutation: {
     login: async (_, { username, password }) => {
       const { errors, valid } = validateLoginInput(username, password)
