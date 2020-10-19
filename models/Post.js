@@ -1,6 +1,6 @@
-import pkg from "mongoose"
+import mongoose from "mongoose"
 
-const { model, Schema } = pkg
+const { model, Schema } = mongoose
 
 const postSchema = new Schema({
   body: String,

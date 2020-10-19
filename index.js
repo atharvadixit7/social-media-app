@@ -1,36 +1,11 @@
-import pkg from "apollo-server"
-import gql from "graphql-tag"
+import Apollo from "apollo-server"
 import mongoose from "mongoose"
 import envs from "./config.js"
 
-import Post from "./models/Post.js"
+import resolvers from "./graphql/resolvers/index.js"
+import typeDefs from "./graphql/typeDefs.js"
 
-const { ApolloServer } = pkg
-
-const typeDefs = gql`
-  type Post {
-    id: ID!
-    body: String!
-    createdAt: String!
-    username: String!
-  }
-  type Query {
-    getPosts: [Post]
-  }
-`
-
-const resolvers = {
-  Query: {
-    getPosts: async () => {
-      try {
-        const posts = await Post.find()
-        return posts
-      } catch (err) {
-        throw new Error(err)
-      }
-    },
-  },
-}
+const { ApolloServer } = Apollo
 
 const server = new ApolloServer({
   typeDefs,
