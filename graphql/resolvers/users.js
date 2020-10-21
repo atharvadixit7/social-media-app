@@ -35,12 +35,12 @@ export default {
 
       const user = await User.findOne({ username })
       if (!user) {
-        errors.general = "User not found"
+        errors.general = "Wrong Credentials"
         throw new UserInputError("Wrong credentials", { errors })
       }
       const match = await bcrypt.compare(password, user.password)
       if (!match) {
-        errors.general = "User not found"
+        errors.general = "Wrong Credentials"
         throw new UserInputError("Wrong credentials", { errors })
       }
       const token = generateToken(user)
