@@ -16,9 +16,9 @@ const PostForm=()=>{
       let data=proxy.readQuery({
         query:FETCH_POSTS_QUERY,
       })
+      // DONE: 
       // console.log("dataaaaaaaaaa",data)
       // console.log('Resultttttt',result)
-      // DONE: 
       data={getPosts:[result.data.createPost,...data.getPosts]}
       proxy.writeQuery({
         query:FETCH_POSTS_QUERY,
@@ -32,6 +32,7 @@ const PostForm=()=>{
     createPost()
   }
   return (
+    <>
     <Form onSubmit={onSubmit}>
       <h2>Create a Post</h2>
       <Form.Field>
@@ -40,12 +41,21 @@ const PostForm=()=>{
         name='body'
         onChange={onChange}
         value={values.body}
+        error={error?true:false}
         />
         <Button type='submit' color='violet'>
         Submit
       </Button>
       </Form.Field>
     </Form>
+    {error&&(
+      <div className="ui error message" style={{marginBottom:"20px"}}>
+        <ul className="list">
+    <li>{error.graphQLErrors[0].message}</li>
+        </ul>
+      </div>
+    )}
+    </>
   )
 }
 

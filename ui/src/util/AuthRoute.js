@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import React, { useContext } from "react"
+import { Route, Redirect } from "react-router-dom"
 
-import { AuthContext } from '../context/auth'
+import { AuthContext } from "../context/auth"
 
 const AuthRoute = ({ component: Component, ...rest }) => {
   const { user } = useContext(AuthContext)
@@ -9,8 +9,10 @@ const AuthRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props => user ? <Redirect to='/' /> : <Component {...props} />
-      } />
+      render={(props) =>
+        user ? <Redirect to="/" /> : <Component {...props} />
+      }
+    />
   )
 }
 
