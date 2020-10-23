@@ -1,11 +1,11 @@
 import React, { useContext } from "react"
-import { Button, Card, Icon, Label, Image } from "semantic-ui-react"
+import { Button, Card, Image } from "semantic-ui-react"
 import moment from "moment"
 import { Link } from "react-router-dom"
 
 import { AuthContext } from "../context/auth"
 import LikeButton from "./LikeButton"
-import DeletePost from "./DeletePost"
+import DeleteButton from "./DeleteButton"
 
 const PostCard = ({
   post: { body, createdAt, id, username, likeCount, commentCount, likes },
@@ -39,7 +39,7 @@ const PostCard = ({
             content: commentCount,
           }}
         />
-        {user && user.username === username && <DeletePost postId={id} />}
+        {user && user.username === username && <DeleteButton postId={id} />}
       </Card.Content>
     </Card>
   )
