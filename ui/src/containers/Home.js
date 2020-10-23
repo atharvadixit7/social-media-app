@@ -32,7 +32,7 @@ const Home = () => {
         {loading ? (
           <h1>Loading Posts...</h1>
         ) : (
-          <Transition.Group duration={800} animation="sclae">
+          <Transition.Group duration={800} animation="scale">
             {posts &&
               posts.map((post) => (
                 <Grid.Column key={post.id} style={{ marginBottom: "18px" }}>

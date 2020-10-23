@@ -1,17 +1,18 @@
-import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import React from "react"
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import { Container } from "semantic-ui-react"
 
-import Home from './containers/Home'
-import Login from './containers/Login'
-import Register from './containers/Register'
-import MenuBar from './components/MenuBar'
+import Home from "./containers/Home"
+import Login from "./containers/Login"
+import Register from "./containers/Register"
+import MenuBar from "./components/MenuBar"
+import SinglePost from "./containers/SinglePost"
 
-import 'semantic-ui-css/semantic.min.css'
-import './App.css'
+import "semantic-ui-css/semantic.min.css"
+import "./App.css"
 
-import { AuthProvider } from './context/auth'
-import AuthRoute from './util/AuthRoute'
+import { AuthProvider } from "./context/auth"
+import AuthRoute from "./util/AuthRoute"
 
 const App = () => {
   return (
@@ -21,12 +22,12 @@ const App = () => {
           <MenuBar />
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
+          <Route exact path="/posts/:postId" component={SinglePost} />
           <Route exact path="/" component={Home} />
         </Container>
-      </ Router>
+      </Router>
     </AuthProvider>
-
-  );
+  )
 }
 
-export default App;
+export default App
